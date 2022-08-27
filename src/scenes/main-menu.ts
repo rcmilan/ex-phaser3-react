@@ -24,7 +24,7 @@ export default class MainMenuScene extends Phaser.Scene {
     const button = this.buttons[index];
 
     // set the newly selected button to a gray stroke
-    button.setStrokeStyle(4, 0x9a9a9a);
+    button.setStrokeStyle(4, 0xa0a0a0);
 
     // move the hand cursor to the right edge
     this.buttonSelector.x = button.x + button.displayWidth * 0.5;
@@ -59,36 +59,38 @@ export default class MainMenuScene extends Phaser.Scene {
 
   create() {
     const { width, height } = this.scale;
-    const btnColor = 0x6a6a6a;
+    const btnColor = 0x1f1f1f;
+    const btnHeight = 50;
+    const btnWidth = 150;
 
     // Play button
     const playButton = this.add
-      .rectangle(width * 0.5, height * 0.6, 150, 50, btnColor)
-      .setDisplaySize(150, 50);
+      .rectangle(width * 0.5, height * 0.6, btnWidth, btnHeight, btnColor)
+      .setDisplaySize(btnWidth, btnHeight);
 
     // Settings button
     const settingsButton = this.add
       .rectangle(
         playButton.x,
         playButton.y + playButton.displayHeight + 10,
-        150,
-        50,
+        btnWidth,
+        btnHeight,
         btnColor
       )
-      .setDisplaySize(150, 50);
+      .setDisplaySize(btnWidth, btnHeight);
 
     // Credits button
     const creditsButton = this.add
       .rectangle(
         settingsButton.x,
         settingsButton.y + settingsButton.displayHeight + 10,
-        150,
-        50,
+        btnWidth,
+        btnHeight,
         btnColor
       )
-      .setDisplaySize(150, 50);
+      .setDisplaySize(btnWidth, btnHeight);
 
-    this.add.text(playButton.x, playButton.y, "Play").setOrigin(0.5);
+    this.add.text(playButton.x, playButton.y, "Play").setOrigin(0.5); //.setColor("#ff0000");
     this.add
       .text(settingsButton.x, settingsButton.y, "Settings")
       .setOrigin(0.5);
@@ -98,10 +100,20 @@ export default class MainMenuScene extends Phaser.Scene {
     this.buttons.push(settingsButton);
     this.buttons.push(creditsButton);
 
-    this.buttonSelector = this.add.rectangle(10, 10, 10, 10, 0x000000);
+    // button selector
+    this.buttonSelector = this.add
+      .rectangle(0, 0, 15, 15, 0xff0000)
+      .setStrokeStyle(1, 0x0000ff);
+
+    this.tweens.add({
+      targets: this.buttonSelector,
+      angle: 90,
+      repeat: -1,
+    });
 
     this.selectButton(0);
 
+    // events
     playButton.on("selected", () => {
       console.log("play");
     });
