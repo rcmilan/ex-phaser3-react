@@ -4,7 +4,7 @@ import MainMenuScene from "./scenes/main-menu";
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: "game",
-  backgroundColor: "#ADD8E6",
+  backgroundColor: "#ffffff",
   scale: {
     mode: Phaser.Scale.ScaleModes.FIT,
     width: window.innerWidth,

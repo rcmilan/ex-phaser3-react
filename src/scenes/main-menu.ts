@@ -23,8 +23,8 @@ export default class MainMenuScene extends Phaser.Scene {
 
     const button = this.buttons[index];
 
-    // set the newly selected button to a white stroke
-    button.setStrokeStyle(4, 0xffffff);
+    // set the newly selected button to a gray stroke
+    button.setStrokeStyle(4, 0x9a9a9a);
 
     // move the hand cursor to the right edge
     this.buttonSelector.x = button.x + button.displayWidth * 0.5;
@@ -59,7 +59,7 @@ export default class MainMenuScene extends Phaser.Scene {
 
   create() {
     const { width, height } = this.scale;
-    const btnColor = 0x9966ff;
+    const btnColor = 0x6a6a6a;
 
     // Play button
     const playButton = this.add
