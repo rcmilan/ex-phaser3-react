@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { CREDITS_SCENE, MAIN_MENU_SCENE } from "../constants/scene-keys";
 
 export default class MainMenuScene extends Phaser.Scene {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -8,7 +9,7 @@ export default class MainMenuScene extends Phaser.Scene {
   private selectedButtonIndex = 0;
 
   constructor() {
-    super("main-menu");
+    super(MAIN_MENU_SCENE);
   }
 
   init() {
@@ -124,6 +125,9 @@ export default class MainMenuScene extends Phaser.Scene {
 
     creditsButton.on("selected", () => {
       console.log("credits");
+
+      this.scene.switch(CREDITS_SCENE);
+      // this.scene.stop(MAIN_MENU_SCENE).launch(CREDITS_SCENE);
     });
 
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
