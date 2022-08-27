@@ -127,7 +127,6 @@ export default class MainMenuScene extends Phaser.Scene {
       console.log("credits");
 
       this.scene.switch(CREDITS_SCENE);
-      // this.scene.stop(MAIN_MENU_SCENE).launch(CREDITS_SCENE);
     });
 
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
@@ -138,8 +137,14 @@ export default class MainMenuScene extends Phaser.Scene {
   }
 
   update() {
-    const upJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.up!);
-    const downJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.down!);
+    const upJustPressed =
+      Phaser.Input.Keyboard.JustDown(this.cursors.up!) ||
+      Phaser.Input.Keyboard.JustDown(this.cursors.left!);
+
+    const downJustPressed =
+      Phaser.Input.Keyboard.JustDown(this.cursors.down!) ||
+      Phaser.Input.Keyboard.JustDown(this.cursors.right!);
+
     const spaceJustPressed = Phaser.Input.Keyboard.JustDown(
       this.cursors.space!
     );

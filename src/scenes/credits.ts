@@ -58,7 +58,6 @@ export default class CreditsScene extends Phaser.Scene {
       console.log("back");
 
       this.scene.switch(MAIN_MENU_SCENE);
-      // this.scene.stop(CREDITS_SCENE).launch(MAIN_MENU_SCENE);
     });
 
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
@@ -67,6 +66,8 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   update() {
+    console.log("credits update");
+
     const spaceJustPressed = Phaser.Input.Keyboard.JustDown(
       this.cursors.space!
     );
