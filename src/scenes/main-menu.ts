@@ -59,7 +59,6 @@ export default class MainMenuScene extends Phaser.Scene {
 
   create() {
     const { width, height } = this.scale;
-
     const btnColor = 0x9966ff;
 
     // Play button
@@ -113,6 +112,12 @@ export default class MainMenuScene extends Phaser.Scene {
 
     creditsButton.on("selected", () => {
       console.log("credits");
+    });
+
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      playButton.off("selected");
+      settingsButton.off("selected");
+      creditsButton.off("selected");
     });
   }
 
